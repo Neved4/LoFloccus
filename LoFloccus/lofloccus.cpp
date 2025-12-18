@@ -18,12 +18,7 @@
 #include <QSaveFile>
 #include <QTextStream>
 
-#ifdef Q_OS_WIN
-#include "libLoFloccusDavWin64.h"
-#endif
-#ifdef Q_OS_DARWIN
-#include "libLoFloccusDavDarwin.h"
-#endif
+#include "webdav_server.h"
 
 LoFloccus::LoFloccus(QWidget *parent)
     : QMainWindow(parent)
