@@ -18,12 +18,7 @@
 #include <QSaveFile>
 #include <QTextStream>
 
-#ifdef Q_OS_WIN
-#include "libLoFloccusDavWin64.h"
-#endif
-#ifdef Q_OS_DARWIN
-#include "libLoFloccusDavDarwin.h"
-#endif
+#include "webdav_server.h"
 
 LoFloccus::LoFloccus(QWidget *parent)
     : QMainWindow(parent)
@@ -269,13 +264,13 @@ void LoFloccus::restartServer()
 
 void LoFloccus::startServer()
 {
-    serverStart(settings->value("serveraddr").toString().toUtf8().data(),
-                settings->value("serverport").toString().toUtf8().data(),
-                settings->value("serverpath").toString().toUtf8().data(),
-                settings->value("serveruser").toString().toUtf8().data(),
-                settings->value("serverpasswd").toString().toUtf8().data()
-                );
-    running = true;
+    bool started = serverStart(
+        settings->value("serveraddr").toString().toStdString(),
+        settings->value("serverport").toString().toStdString(),
+        settings->value("serverpath").toString().toStdString(),
+        settings->value("serveruser").toString().toStdString(),
+        settings->value("serverpasswd").toString().toStdString());
+    running = started;
     this->reloadUiState();
 }
 
