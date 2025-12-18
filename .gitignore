@@ -8,4 +8,6 @@ deploy
 rcc*
 *.syso
 *.ini
-
+LoFloccus/libs/*.a
+LoFloccus/libs/*.h
+LoFloccus/assets/icon.icns
