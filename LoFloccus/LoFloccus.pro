@@ -19,10 +19,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
 	main.cpp \
-	lofloccus.cpp
+	lofloccus.cpp \
+	webdav_server.cpp
 
 HEADERS += \
-	lofloccus.h
+	lofloccus.h \
+	webdav_server.h
 
 FORMS += \
 	lofloccus.ui
@@ -30,7 +32,8 @@ FORMS += \
 # Generic for all builds
 VERSION = 1.2.4
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
-INCLUDEPATH += $${PWD}/libs
+HTTPLIB_DIR = $${PWD}/../vendored/cpp-httplib
+INCLUDEPATH += $${PWD}/libs $$HTTPLIB_DIR
 
 # Windows Build
 win32 {
@@ -38,7 +41,7 @@ win32 {
 	QMAKE_TARGET_PRODUCT = LoFloccus
 	QMAKE_TARGET_DESCRIPTION = LoFloccus
 	QMAKE_TARGET_COPYRIGHT = Copyright © 2019-2022 TCB13
-	LIBS += -L$${PWD}/libs -lLoFloccusDavWin64
+	LIBS += -lws2_32 -lcrypt32
 }
 
 # macOS Build
