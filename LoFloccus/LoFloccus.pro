@@ -19,10 +19,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
 	main.cpp \
-	lofloccus.cpp
+	lofloccus.cpp \
+	webdav_server.cpp
 
 HEADERS += \
-	lofloccus.h
+	lofloccus.h \
+	webdav_server.h
 
 FORMS += \
 	lofloccus.ui
@@ -38,7 +40,6 @@ win32 {
 	QMAKE_TARGET_PRODUCT = LoFloccus
 	QMAKE_TARGET_DESCRIPTION = LoFloccus
 	QMAKE_TARGET_COPYRIGHT = Copyright © 2019-2022 TCB13
-	LIBS += -L$${PWD}/libs -lLoFloccusDavWin64
 }
 
 # macOS Build
@@ -49,7 +50,6 @@ mac {
 	QMAKE_BUNDLE_DATA += bundleIcon
 	QMAKE_TARGET_BUNDLE_PREFIX = "com.tcb13"
 	QMAKE_INFO_PLIST = Info.plist
-	LIBS += -L$${PWD}/libs -lLoFloccusDavDarwin
 	SOURCES += platformdarwin.mm
 	HEADERS += platformdarwin.h
 	LIBS += -framework Foundation
