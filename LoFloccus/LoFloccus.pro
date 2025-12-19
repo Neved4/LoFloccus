@@ -19,10 +19,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
 	main.cpp \
-	lofloccus.cpp
+	lofloccus.cpp \
+	webdav_server.cpp \
+	../vendored/civetweb/src/civetweb.c \
+	../vendored/WebDavServer/src/request.cpp \
+	../vendored/WebDavServer/src/response.cpp \
+	../vendored/WebDavServer/src/server.cpp
 
 HEADERS += \
-	lofloccus.h
+	lofloccus.h \
+	webdav_server.h
 
 FORMS += \
 	lofloccus.ui
@@ -30,7 +36,9 @@ FORMS += \
 # Generic for all builds
 VERSION = 1.2.4
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
-INCLUDEPATH += $${PWD}/libs
+DEFINES += NO_SSL
+INCLUDEPATH += $${PWD}/libs $${PWD}/../vendored/civetweb/include \
+	$${PWD}/../vendored/WebDavServer/include
 
 # Windows Build
 win32 {
@@ -38,7 +46,6 @@ win32 {
 	QMAKE_TARGET_PRODUCT = LoFloccus
 	QMAKE_TARGET_DESCRIPTION = LoFloccus
 	QMAKE_TARGET_COPYRIGHT = Copyright © 2019-2022 TCB13
-	LIBS += -L$${PWD}/libs -lLoFloccusDavWin64
 }
 
 # macOS Build
@@ -49,12 +56,12 @@ mac {
 	QMAKE_BUNDLE_DATA += bundleIcon
 	QMAKE_TARGET_BUNDLE_PREFIX = "com.tcb13"
 	QMAKE_INFO_PLIST = Info.plist
-	LIBS += -L$${PWD}/libs -lLoFloccusDavDarwin
 	SOURCES += platformdarwin.mm
 	HEADERS += platformdarwin.h
 	LIBS += -framework Foundation
 	LIBS += -framework AppKit
 	LIBS += -framework Security
+	LIBS += -lpthread
 }
 
 
