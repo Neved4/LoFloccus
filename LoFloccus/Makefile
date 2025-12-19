@@ -8,9 +8,11 @@ armheader    = ${libdir}/${webdavDarwin}.arm64.h
 armname      = ${webdavDarwin}.arm64.a
 gosrc        = ${libdir}/libLoFloccusDav.go
 gosrcabs     = ${PWD}/${gosrc}
+header       = ${libdir}/${webdavDarwin}.h
 icns         = assets/icon.icns
 libdir       = libs
-qmakeargs    = -o qmake.mk -config release QMAKE_APPLE_DEVICE_ARCHS = 'arm64'
+qmakeargs    = -o qmake.mk -config release \
+	QMAKE_APPLE_DEVICE_ARCHS=arm64
 qmakefile    = LoFloccus.pro
 qmakemk      = qmake.mk
 QMAKE        = qmake
