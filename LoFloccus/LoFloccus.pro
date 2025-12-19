@@ -69,9 +69,9 @@ RESOURCES += \
 	resources.qrc
 
 # Static Builds
-QTPREFIX=$$[QT_INSTALL_PREFIX]
-equals(QTPREFIX, "C:/Qt-Static/Qt-5.14.2") || \
-	equals(QTPREFIX, "/Users/tcb13/Qt-Static/Qt-5.12.12") {
+qtPrefix = $$[QT_INSTALL_PREFIX]
+equals(qtPrefix, "C:/Qt-Static/Qt-6.9.3") || \
+	equals(qtPrefix, "/Users/tcb13/Qt-Static/Qt-6.9.3") {
 	message("--STATIC BUILD--")
 	CONFIG += qt static
 	win32 {
