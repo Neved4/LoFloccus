@@ -1,0 +1,3 @@
+[submodule "vendored/microhttpd"]
+	path = vendored/microhttpd
+	url = git://git.gnunet.org/libmicrohttpd.git
